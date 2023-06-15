@@ -246,7 +246,7 @@ def generate_stacked_frames(fname, shifted_images,ref_image ,color_range,
     '''
     if path_out is not None:
         if not os.path.exists(path_out):
-            os.makedir(path_out)
+            os.makedirs(path_out)
             
         fname = path_out+fname
     
@@ -266,7 +266,7 @@ def generate_stacked_frames(fname, shifted_images,ref_image ,color_range,
 
         _plot_data = sp.ndimage.gaussian_filter(_image-np.median(_image),gauss_blur)
         _plot_data_no_ref = sp.ndimage.gaussian_filter(_image_no_ref-np.median(_image_no_ref),gauss_blur)
-        plt.pcolormesh(_plot_data,cmap='RdBu_r',vmin=-_color_range,vmax=_color_range)
+        plt.pcolormesh(_plot_data,cmap='RdBu_r',vmin=-color_range,vmax=color_range)
 
         plt.imsave(fname+'_%04d'%i+'.png',_plot_data
                    ,cmap=cmap_out,vmin=-color_range,vmax=color_range )
